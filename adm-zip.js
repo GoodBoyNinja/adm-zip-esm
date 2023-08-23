@@ -1,7 +1,7 @@
-const Utils = require("./util");
-const pth = require("path");
-const ZipEntry = require("./zipEntry");
-const ZipFile = require("./zipFile");
+import Utils from "./util/index.js";
+import pth from "path";
+import ZipEntry from "./zipEntry.js";
+import ZipFile from "./zipFile.js";
 
 const get_Bool = (val, def) => (typeof val === "boolean" ? val : def);
 const get_Str = (val, def) => (typeof val === "string" ? val : def);
@@ -17,7 +17,7 @@ const defaultOptions = {
     fs: null
 };
 
-module.exports = function (/**String*/ input, /** object */ options) {
+export default function (/**String*/ input, /** object */ options) {
     let inBuffer = null;
 
     // create object based default options, allowing them to be overwritten

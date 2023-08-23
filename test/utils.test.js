@@ -1,7 +1,7 @@
 "use strict";
-const { expect } = require("chai");
-const { crc32, canonical, sanitize } = require("../util/utils");
-const pth = require("path");
+import { expect } from "chai";
+import { crc32, canonical, sanitize } from "../util/utils";
+import pth from "path";
 
 describe("utils - crc32 function", () => {
     // tests how crc32 function handles strings as input

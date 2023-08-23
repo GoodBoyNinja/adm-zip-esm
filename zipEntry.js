@@ -1,9 +1,10 @@
-var Utils = require("./util"),
-    Headers = require("./headers"),
-    Constants = Utils.Constants,
-    Methods = require("./methods");
 
-module.exports = function (/*Buffer*/ input) {
+import Utils from "./util/index.js";
+import Headers from "./headers/index.js";
+import Constants from "./util/constants.js";
+import * as  Methods from "./methods/index.js";
+
+export default function (/*Buffer*/ input) {
     var _entryHeader = new Headers.EntryHeader(),
         _entryName = Buffer.alloc(0),
         _comment = Buffer.alloc(0),
@@ -230,9 +231,9 @@ module.exports = function (/*Buffer*/ input) {
             var n = _entryName.toString();
             return _isDirectory
                 ? n
-                      .substr(n.length - 1)
-                      .split("/")
-                      .pop()
+                    .substr(n.length - 1)
+                    .split("/")
+                    .pop()
                 : n.split("/").pop();
         },
         get isDirectory() {

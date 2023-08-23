@@ -1,7 +1,7 @@
-const assert = require("assert");
-const path = require("path");
-const Zip = require("../../adm-zip");
-const rimraf = require("rimraf");
+import assert from "assert";
+import path from "path";
+import Zip from "../../adm-zip";
+import rimraf from "rimraf";
 
 describe("crc", () => {
     const destination = __dirname + "/xxx";

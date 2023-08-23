@@ -1,8 +1,10 @@
-const fsystem = require("./fileSystem").require();
-const pth = require("path");
-const Constants = require("./constants");
-const Errors = require("./errors");
+import fileSystem from "./fileSystem.js";
+import pth from "path";
+import Constants from "./constants.js";
+import Errors from "./errors.js";
+
 const isWin = typeof process === "object" && "win32" === process.platform;
+const fsystem = fileSystem.require();
 
 const is_Obj = (obj) => obj && typeof obj === "object";
 
@@ -20,7 +22,7 @@ const crcTable = new Uint32Array(256).map((t, c) => {
 
 // UTILS functions
 
-function Utils(opts) {
+export default function Utils(opts) {
     this.sep = pth.sep;
     this.fs = fsystem;
 
@@ -32,7 +34,7 @@ function Utils(opts) {
     }
 }
 
-module.exports = Utils;
+
 
 // INSTANCED functions
 
@@ -167,9 +169,9 @@ Utils.prototype.findFiles = function (/*String*/ path) {
     return findSync(path, undefined, true);
 };
 
-Utils.prototype.getAttributes = function () {};
+Utils.prototype.getAttributes = function () { };
 
-Utils.prototype.setAttributes = function () {};
+Utils.prototype.setAttributes = function () { };
 
 // STATIC functions
 
@@ -187,7 +189,7 @@ Utils.crc32 = function (buf) {
 
     let len = buf.length;
     let crc = ~0;
-    for (let off = 0; off < len; ) crc = Utils.crc32update(crc, buf[off++]);
+    for (let off = 0; off < len;) crc = Utils.crc32update(crc, buf[off++]);
     // xor and cast as uint32 number
     return ~crc >>> 0;
 };

@@ -2,7 +2,8 @@
 
 // node crypt, we use it for generate salt
 // eslint-disable-next-line node/no-unsupported-features/node-builtins
-const { randomFillSync } = require("crypto");
+
+import { randomFillSync } from "crypto";
 
 // generate CRC32 lookup table
 const crctable = new Uint32Array(256).map((t, crc) => {
@@ -107,7 +108,7 @@ function make_encrypter(/*Buffer*/ pwd) {
     };
 }
 
-function decrypt(/*Buffer*/ data, /*Object*/ header, /*String, Buffer*/ pwd) {
+export function decrypt(/*Buffer*/ data, /*Object*/ header, /*String, Buffer*/ pwd) {
     if (!data || !Buffer.isBuffer(data) || data.length < 12) {
         return Buffer.alloc(0);
     }
@@ -128,7 +129,7 @@ function decrypt(/*Buffer*/ data, /*Object*/ header, /*String, Buffer*/ pwd) {
 }
 
 // lets add way to populate salt, NOT RECOMMENDED for production but maybe useful for testing general functionality
-function _salter(data) {
+export function _salter(data) {
     if (Buffer.isBuffer(data) && data.length >= 12) {
         // be aware - currently salting buffer data is modified
         config.genSalt = function () {
@@ -143,7 +144,7 @@ function _salter(data) {
     }
 }
 
-function encrypt(/*Buffer*/ data, /*Object*/ header, /*String, Buffer*/ pwd, /*Boolean*/ oldlike = false) {
+export function encrypt(/*Buffer*/ data, /*Object*/ header, /*String, Buffer*/ pwd, /*Boolean*/ oldlike = false) {
     // 1. test data if data is not Buffer we make buffer from it
     if (data == null) data = Buffer.alloc(0);
     // if data is not buffer be make buffer from it
@@ -167,4 +168,4 @@ function encrypt(/*Buffer*/ data, /*Object*/ header, /*String, Buffer*/ pwd, /*B
     return encrypter(data, result, 12);
 }
 
-module.exports = { decrypt, encrypt, _salter };
+

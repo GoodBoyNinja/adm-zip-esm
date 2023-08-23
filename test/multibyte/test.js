@@ -1,7 +1,7 @@
-const { expect } = require("chai");
-const Utils = require("../../util");
-const AdmZip = require("../../adm-zip");
-const path = require("path");
+import { expect } from "chai";
+import Utils from "../../util";
+import AdmZip from "../../adm-zip";
+import path from "path";
 
 describe("adm-zip", () => {
     it("adds multibyte ZIP comment in UTF-8 with appropriate byte", () => {

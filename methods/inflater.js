@@ -1,5 +1,7 @@
-module.exports = function (/*Buffer*/ inbuf) {
-    var zlib = require("zlib");
+import zlib from "zlib";
+
+export default function (/*Buffer*/ inbuf) {
+
 
     return {
         inflate: function () {

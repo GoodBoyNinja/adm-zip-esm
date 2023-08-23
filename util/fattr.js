@@ -1,9 +1,11 @@
-const fs = require("./fileSystem").require();
-const pth = require("path");
 
-fs.existsSync = fs.existsSync || pth.existsSync;
+import fileSystem from "./fileSystem.js";
+import pth from "path";
+const fs = fileSystem.require();
 
-module.exports = function (/*String*/ path) {
+// fs.existsSync = fs.existsSync || pth.existsSync;
+
+export default function (/*String*/ path) {
     var _path = path || "",
         _obj = newAttr(),
         _stat = null;
@@ -56,9 +58,9 @@ module.exports = function (/*String*/ path) {
             return _obj.executable;
         },
 
-        decodeAttributes: function () {},
+        decodeAttributes: function () { },
 
-        encodeAttributes: function () {},
+        encodeAttributes: function () { },
 
         toJSON: function () {
             return {

@@ -1,9 +1,9 @@
 "use strict";
+import * as fs from "fs";
+import path from "path";
+import Zip from "../../adm-zip";
 
 (function () {
-    var fs = require("fs");
-    var path = require("path");
-    var Zip = require("../../adm-zip");
 
     // init the final zip file
     var writeZip = new Zip();

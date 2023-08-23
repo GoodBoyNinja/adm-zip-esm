@@ -1,2 +1,8 @@
-exports.EntryHeader = require("./entryHeader");
-exports.MainHeader = require("./mainHeader");
+import EntryHeader from "./entryHeader.js";
+import MainHeader from "./mainHeader.js";
+
+export default {
+    EntryHeader,
+    MainHeader
+};
+

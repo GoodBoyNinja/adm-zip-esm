@@ -1,4 +1,4 @@
-module.exports = {
+export default {
     /* Header error messages */
     INVALID_LOC: "Invalid LOC header (bad signature)",
     INVALID_CEN: "Invalid CEN header (bad signature)",
